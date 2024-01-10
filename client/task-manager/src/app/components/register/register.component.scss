@@ -1,0 +1,21 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &-input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+/* Small devices (phones, 600px and below) */
+@media (max-width: 600px) {
+  .form {
+    width: 100%;
+  }
+}

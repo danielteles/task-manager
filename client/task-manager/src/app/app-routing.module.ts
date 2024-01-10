@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'form', component: TaskFormComponent },
   { path: 'list', component: TaskListComponent },
-  { path: '', redirectTo: '/list', pathMatch: 'full' }, // Redirect to tasks as default
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to tasks as default
 ];
 
 @NgModule({

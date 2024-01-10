@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -7,28 +9,30 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  username: string = '';
-  password: string = '';
+  registerForm: FormGroup;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.registerForm = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    });
+  }
 
   onRegister(): void {
-    const user = {
-      username: this.username,
-      password: this.password,
-    };
+    if (this.registerForm.valid) {
+      console.log(this.registerForm.value);
 
-    this.authService.register(user).subscribe({
-      next: () => {
-        console.log('Registration successful');
-        // Handle successful registration
-        // For example, redirect to login or auto-login the user
-      },
-      error: (error) => {
-        console.error('Registration failed', error);
-        // Handle registration error
-        // For example, show an error message
-      },
-    });
+      this.authService.register(this.registerForm.value).subscribe({
+        next: () => {
+          console.log('Registration successful');
+          this.router.navigate(['/login']);
+        },
+        error: (error) => {
+          console.error('Registration failed', error);
+        },
+      });
+    } else {
+      console.error('Form is not valid');
+    }
   }
 }

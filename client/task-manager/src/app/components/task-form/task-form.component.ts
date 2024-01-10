@@ -22,14 +22,8 @@ export class TaskFormComponent {
   addTask(): void {
     if (this.taskForm.valid) {
       console.log(this.taskForm.value);
-      const _validatedTask = {
-        ...this.taskForm.value,
-        status: this.taskForm.value.status === 'true',
-      };
 
-      console.log(_validatedTask);
-
-      this.taskService.addTask(_validatedTask).subscribe({
+      this.taskService.addTask(this.taskForm.value).subscribe({
         next: () => {
           this.taskAdded.emit();
           this.taskForm.reset({ title: '', status: false });
@@ -37,7 +31,7 @@ export class TaskFormComponent {
         error: (err) => console.error('Error adding task', err),
       });
     } else {
-      // Handle invalid form scenario
+      console.error('Form is not valid');
     }
   }
 }
