@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Client",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/client/task-manager",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "start"
+      ],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Launch Server",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/server",
+      "program": "${workspaceFolder}/server/index.js",
+      "restart": true,
+      "console": "integratedTerminal",
+      "env": {
+        "DB_PASSWORD": "123admin",
+        "JWT_SECRET": "myJWTSecret123!@#SecureKey$"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Full Stack",
+      "configurations": [
+        "Launch Client",
+        "Launch Server"
+      ]
+    }
+  ]
+}
