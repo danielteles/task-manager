@@ -1,0 +1,31 @@
+<div class="item">
+  <div class="item-data">
+    <input
+      class="item-data__text"
+      type="text"
+      [(ngModel)]="task.title"
+      [disabled]="!task.editing"
+      [ngClass]="{ 'item-data__text-disabled': !task.editing }"
+    />
+    <mat-checkbox [ngModel]="task.status" (change)="toggleCompletion($event)">
+      {{ task.status ? "Mark as Incomplete" : "Mark as Complete" }}
+    </mat-checkbox>
+  </div>
+  <div class="item-actions">
+    <button mat-button (click)="enableEdit()" *ngIf="!task.editing">
+      Edit
+    </button>
+    <button mat-button (click)="saveEdit()" *ngIf="task.editing">Save</button>
+    <button mat-button color="warn" (click)="cancelEdit()" *ngIf="task.editing">
+      Cancel
+    </button>
+    <button
+      mat-button
+      color="warn"
+      (click)="deleteTask()"
+      *ngIf="!task.editing"
+    >
+      Delete
+    </button>
+  </div>
+</div>

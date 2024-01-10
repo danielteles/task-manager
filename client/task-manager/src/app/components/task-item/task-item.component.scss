@@ -1,0 +1,56 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &-data {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__text {
+      border: 1px solid #9e9e9e;
+      border-radius: 4px;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #ff4081;
+
+      &-disabled {
+        background-color: #f1f1f1;
+        color: #6c757d;
+      }
+    }
+
+    &__checkbox {
+      margin: 0;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Small devices (phones, 600px and below) */
+@media (max-width: 600px) {
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-between;
+
+    &-data {
+      /* Further adjustments for small devices */
+      gap: 4px;
+    }
+
+    &-actions {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

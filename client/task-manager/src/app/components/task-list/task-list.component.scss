@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 30px;
+
+  &__form-field {
+    width: 170px;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+/* Small devices (phones, 600px and below) */
+@media (max-width: 600px) {
+  .filter-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+
+    &__form-field {
+      width: 100%;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

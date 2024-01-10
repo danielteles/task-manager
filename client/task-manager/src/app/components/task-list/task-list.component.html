@@ -1,0 +1,48 @@
+<div class="filter-options">
+  <mat-form-field appearance="outline" class="filter-options__form-field">
+    <mat-label>Search Tasks</mat-label>
+    <button *ngIf="!searchTerm" matSuffix mat-icon-button aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+    <input matInput [(ngModel)]="searchTerm" placeholder="Type to search..." />
+    <button
+      *ngIf="searchTerm"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="searchTerm = ''"
+    >
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="filter-options__form-field">
+    <mat-label>Sort by</mat-label>
+    <mat-select [(value)]="sortKey">
+      <mat-option value="completed">Complete</mat-option>
+      <mat-option value="incompleted">Incomplete</mat-option>
+      <mat-option value="title">Title</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<mat-list>
+  <app-task-item
+    *ngFor="
+      let task of (tasks$ | async) ?? []
+        | filterTasks : searchTerm
+        | sortTasks : sortKey
+    "
+    [task]="task"
+    (edit)="onEdit(task)"
+    (save)="onSave(task)"
+    (delete)="onDelete(task.id)"
+  >
+  </app-task-item>
+</mat-list>
+
+<div class="actions">
+  <button mat-raised-button color="primary" [routerLink]="['/form']">
+    Include tasks
+  </button>
+</div>

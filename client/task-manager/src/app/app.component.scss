@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 100px;
+}
+
+/* Smaller devices (tablets, 768px and below) */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 50px;
+  }
+}
+
+/* Extra small devices (phones, 600px and below) */
+@media (max-width: 600px) {
+  .container {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+}

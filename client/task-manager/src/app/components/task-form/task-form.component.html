@@ -1,0 +1,33 @@
+<div class="form">
+  <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+    <mat-form-field class="form-input">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        placeholder="Enter task title"
+        formControlName="title"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field class="form-input">
+      <mat-label>Status</mat-label>
+      <mat-select
+        placeholder="Select a status"
+        formControlName="status"
+        required
+      >
+        <mat-select-trigger>Select a status</mat-select-trigger>
+        <mat-option [value]="true">Complete</mat-option>
+        <mat-option [value]="false">Incomplete</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="accent" [routerLink]="['/list']">
+        View list of tasks
+      </button>
+      <button mat-raised-button color="primary" type="submit">Add task</button>
+    </div>
+  </form>
+</div>
